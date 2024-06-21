@@ -1,23 +1,23 @@
 export let cart = JSON.parse(localStorage.getItem('cart')) || [
     {
         productId: "dd82ca78-a18b-4e2a-9250-31e67412f98d",
-        quantity: 2,
-        deliveryOptionsId: '1',
+        quantity: 5,
+        deliveryOptionsId: "1",
     },
     {
         productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-        quantity: 1,
-        deliveryOptionsId: '2',
+        quantity: 5,
+        deliveryOptionsId: "2",
     }
 ];
 
 function saveToStorage() {
-
     localStorage.setItem('cart',JSON.stringify(cart));
 }
 
 export function handleAddToCart(button) {
     const { productId } = button.dataset;
+
     let matchingItem;
 
     cart.forEach(item => {
@@ -35,7 +35,7 @@ export function handleAddToCart(button) {
         cart.push({
             productId,
             quantity,
-            deliveryOptionId : '1',
+            deliveryOptionsId : "1",
         });
     }
 
@@ -70,7 +70,7 @@ function showAddedToCartMessage(productId) {
 export function removeFromCart (param) {
     const tempCart = [];
 
-    cart.forEach((cartItem) => {
+    cart.forEach((cartItem) => { 
         if(cartItem.productId !== param) {
             tempCart.push(cartItem);
         }
@@ -80,3 +80,15 @@ export function removeFromCart (param) {
     saveToStorage();
 };
 
+export function updateDeliveryOption(productId, deliveryId) {
+    let matchingItem;
+
+    cart.forEach((item) => {
+        if (productId === item.productId) {
+            matchingItem = item;
+        }
+    });
+
+    matchingItem.deliveryOptionsId = deliveryId;
+    saveToStorage();
+}   
