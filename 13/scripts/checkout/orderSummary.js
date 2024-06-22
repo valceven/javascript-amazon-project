@@ -34,9 +34,16 @@ export function renderOrderSummary() {
         console.log(deliveryFinal);
 
         const today = dayjs();
+        const deliveryDate = today.subtract(1, 'days');
+        const dateString = deliveryDate.format("dddd ");
 
-        const deliveryDate = today.add(deliveryFinal.deliveryDays, 'days');
-        const dateString = deliveryDate.format("dddd, MMMM D");
+        function isWeekend(today) {
+            const day = today.format("dddd");
+            if(day === ("Saturday") || day === ("Sunday")) console.log("OTENDAKO");
+            console.log("OTEN GAMAY");
+        }
+
+        isWeekend(deliveryDate);
 
         cartSummmaryHTML +=
             `<div class="cart-item-container-${matchingProduct.id}">
