@@ -37,13 +37,6 @@ export function renderOrderSummary() {
         const deliveryDate = today.subtract(1, 'days');
         const dateString = deliveryDate.format("dddd ");
 
-        function isWeekend(today) {
-            const day = today.format("dddd");
-            if(day === ("Saturday") || day === ("Sunday")) console.log("OTENDAKO");
-            console.log("OTEN GAMAY");
-        }
-
-        isWeekend(deliveryDate);
 
         cartSummmaryHTML +=
             `<div class="cart-item-container-${matchingProduct.id}">
@@ -58,7 +51,7 @@ export function renderOrderSummary() {
                 <div class="product-name">
                     ${matchingProduct.name}
                 </div>
-                <div class="product-price">$${formatCurrency(matchingProduct.priceCents)}</div>
+                <div class="product-price">${matchingProduct.getPrice()}</div>
                 <div class="product-quantity">
                     <span> Quantity: <span class="quantity-label">${cartItem.quantity}</span> </span>
                     <span class="update-quantity-link link-primary js-update-link"

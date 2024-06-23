@@ -1,6 +1,5 @@
 import { handleAddToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
-import { formatCurrency } from "./utils/money.js";
 import { updateCartQuantityDisplay } from "../data/cart.js";
 
 
@@ -12,10 +11,11 @@ function generateProductHTML(product) {
         </div>
         <div class="product-name limit-text-to-2-lines">${product.name}</div>
         <div class="product-rating-container">
-            <img class="product-rating-stars" src="images/ratings/rating-${product.rating.stars * 10}.png" />
+            <img class="product-rating-stars" 
+            src="${product.getStarsUrl()}" />
             <div class="product-rating-count link-primary">${product.rating.count}</div>
         </div>
-        <div class="product-price">$${formatCurrency(product.priceCents)}</div>
+        <div class="product-price">${product.getPrice()}</div>
         <div class="product-quantity-container">
             <select class="js-select-quantity-${product.id}">
                 <option selected value="1">1</option>
