@@ -1,7 +1,10 @@
-import { cart } from "../../data/cart.js";
+import { Cart } from "../../data/cart-class.js";
 import { renderCartProducts } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/delivery-options.js";
 import { formatCurrency } from "../utils/money.js"; 
+
+
+const cart = new Cart('cart-oop');  // Instantiate the Cart class
 
 export function renderPaymentSummary() {
 
@@ -12,7 +15,7 @@ export function renderPaymentSummary() {
     let shippingPriceCents = 0;
     let totalItems = 0;
     
-    cart.forEach((cartItem) => {
+    cart.cartItems.forEach((cartItem) => {
         const product = renderCartProducts(cartItem.productId); 
         productPriceCents += product.priceCents * cartItem.quantity;
         const deliveryOption = getDeliveryOption(cartItem.deliveryOptionsId);
