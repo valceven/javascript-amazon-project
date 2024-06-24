@@ -3,8 +3,7 @@ import { renderCartProducts } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/delivery-options.js";
 import { formatCurrency } from "../utils/money.js"; 
 
-
-const cart = new Cart('cart-oop');  // Instantiate the Cart class
+const cart = new Cart('cart-oop'); 
 
 export function renderPaymentSummary() {
 

@@ -22,7 +22,6 @@ export function renderOrderSummary() {
 
         const productId = cartItem.productId;
         const matchingProduct = renderCartProducts(productId);
-        console.log("OTEN" + matchingProduct);
 
         checkout();
 
